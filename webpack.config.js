@@ -23,7 +23,6 @@ module.exports = {
     alias: {
       Main: 'app/components/Main.jsx',
       foundation: 'foundation-sites/js/foundation.core',
-      Nav: 'app/components/Nav.jsx',
       applicationStyles: 'app/styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']

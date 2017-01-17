@@ -1,7 +1,7 @@
 {
-  "name": "react-timer",
+  "name": "react-todo",
   "version": "1.0.0",
-  "description": "It's a timer app",
+  "description": "todo in react",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
