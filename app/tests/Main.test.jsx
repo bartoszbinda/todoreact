@@ -8,7 +8,14 @@ var $ = require('jquery');
 var Main = require('Main');
 
 describe('Main', () => {
-  it('should exists', () => {
-    expect(Main).toExist();
-  });
+    it('should exists', () => {
+        expect(Main).toExist();
+    });
+    it('should app todo to the todos state on handleAddTodo()', () => {
+        var todoText = 'kooooooootki';
+        var main = TestUtils.renderIntoDocument(<Main/>);
+        main.setState({todos: []});
+        main.handleAddTodo(todoText);
+        expect(main.state.todos[0].text).toBe(todoText);
+    });
 });
