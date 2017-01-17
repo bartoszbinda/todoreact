@@ -20,8 +20,11 @@ module.exports = {
   },
   resolve: {
     root: __dirname,
+    modulesDirectories: [
+      'node_modules',
+      './app/components',
+    ],
     alias: {
-      Main: 'app/components/Main.jsx',
       foundation: 'foundation-sites/js/foundation.core',
       applicationStyles: 'app/styles/app.scss'
     },
