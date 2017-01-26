@@ -54,7 +54,7 @@ describe("TodoAPI", () => {
         var todos = [
             {
                 id: 1,
-                text: "randomtext",
+                text: "sthsth",
                 completed: true
             }, {
                 id: 2,
@@ -75,5 +75,19 @@ describe("TodoAPI", () => {
             var filteredTodos = TodoAPI.filterTodos(todos, false, '');
             expect(filteredTodos.length).toEqual(1);
         });
+        it("should sort by completed status", () =>
+        {
+            var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+            expect(filteredTodos[0].completed).toBe(false);
+        });
+        it("should sort by searchText with given text", () => {
+            var filteredTodos = TodoAPI.filterTodos(todos, true, 'random');
+            expect(filteredTodos[0].text).toEqual("randomtext3456");
+        });
+        it("should sort by searchText with empty given searchText", () => {
+            var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+            expect(filteredTodos.length).toBe(3);
+        });
+
     });
 });
