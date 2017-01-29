@@ -21,7 +21,9 @@ module.exports = {
         ],
         alias: {
             foundation: 'foundation-sites/js/foundation.core',
-            applicationStyles: 'app/styles/app.scss'
+            applicationStyles: 'app/styles/app.scss',
+            actions: 'app/actions/actions.jsx',
+            
         },
         extensions: ['', '.js', '.jsx']
     },

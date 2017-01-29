@@ -1,15 +1,15 @@
-var React = require('react');
+var React = require("react");
 
 var Search = React.createClass({
-    handleSearch: function() {
-        var showCompleted = this.refs.showCompleted.checked;
-        var searchText = this.refs.searchText.value;
-        this
+	handleSearch: function() {
+		var showCompleted = this.refs.showCompleted.checked;
+		var searchText = this.refs.searchText.value;
+		this
             .props
             .onSearch(showCompleted, searchText);
-    },
-    render: function() {
-        return (
+	},
+	render: function() {
+		return (
             <div className='container__header'>
                 <div>
                     <input type='search' ref='searchText' placeholder="search todos" onChange={this.handleSearch}/>
@@ -21,7 +21,7 @@ var Search = React.createClass({
                     </label>
                 </div>
             </div>
-        );
-    }
+		);
+	}
 });
 module.exports = Search;

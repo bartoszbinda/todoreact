@@ -29,6 +29,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.23.1",
     "eslint": "^3.13.0",
+    "eslint-plugin-react": "^6.9.0",
     "expect": "^1.14.0",
     "foundation-sites": "^6.2.0",
     "jquery": "^2.2.1",
