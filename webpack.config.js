@@ -41,7 +41,7 @@ module.exports = {
             {
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015', 'stage-0']
+                    presets: ['react', 'es2015', 'stage-0', 'stage-1']
                 },
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/
@@ -51,7 +51,7 @@ module.exports = {
     sassLoader: {
         includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')]
     },
-    //devtools: "cheap-module-source-map"
+    //devtools: "cheap-module-source-map" //fastest
     devtool: 'eval'
     //devtool: 'inline-eval-cheap-source-map'
 
