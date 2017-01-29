@@ -9,7 +9,14 @@ module.exports = {
     externals: {
         jquery: 'jQuery'
     },
-    plugins: [new webpack.ProvidePlugin({'$': 'jquery', 'jQuery': 'jquery'})],
+    plugins: [new webpack.ProvidePlugin({'$': 'jquery', 'jQuery': 'jquery'})
+// ,
+//     new webpack.DefinePlugin({
+//     'process.env': {
+//       'NODE_ENV': JSON.stringify('production')
+//     }
+//   })
+    ],
     output: {
         path: __dirname,
         filename: './public/bundle.js'
@@ -23,7 +30,9 @@ module.exports = {
             foundation: 'foundation-sites/js/foundation.core',
             applicationStyles: 'app/styles/app.scss',
             actions: 'app/actions/actions.jsx',
-            
+            reducers: 'app/reducers/reducers.jsx',
+            configureStore: 'app/store/configureStore.jsx'
+
         },
         extensions: ['', '.js', '.jsx']
     },
@@ -42,6 +51,8 @@ module.exports = {
     sassLoader: {
         includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')]
     },
-    devtool: 'inline-eval-cheap-source-map'
+    //devtools: "cheap-module-source-map"
+    devtool: 'eval'
+    //devtool: 'inline-eval-cheap-source-map'
 
 };

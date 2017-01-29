@@ -21,19 +21,6 @@ var Main = React.createClass({
 	componentDidUpdate: function() {
 		TodoAPI.setTodos(this.state.todos);
 	},
-	handleToggle: function(id) {
-		var updatedTodos = this
-            .state
-            .todos
-            .map(function(todo) {
-	if (todo.id === id) {
-		todo.completed = !todo.completed;
-		todo.completedAt = todo.completed? moment().unix() : undefined;
-	}
-	return todo;
-});
-		this.setState({todos: updatedTodos});
-	},
 	handleAddTodo: function(text) {
 		this.setState({
 			todos: [
@@ -65,7 +52,7 @@ var Main = React.createClass({
                     <div className='column small-centered small-11 medium-6 large-5'>
                         <div className='container'>
                             <Search onSearch={this.handleSearch}/>
-                            <TodoList todos={filteredTodos} onToggle={this.handleToggle}/>
+                            <TodoList/>
                             <AddTodo onSubmitTodo={this.handleAddTodo}/>
                         </div>
                     </div>
