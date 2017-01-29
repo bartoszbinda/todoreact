@@ -28,14 +28,13 @@ describe('Search', () => {
     });
     it('should dispatch toggleShowCompleted when checkbox checked', () => {
         var spy = expect.createSpy();
-        var search = TestUtils.renderIntoDocument(<Search dispatch={spy}/>);
-        search.refs.showCompleted.checked = true;
         var action = {
             type: "TOGGLE_SHOW_COMPLETED"
         };
+        var search = TestUtils.renderIntoDocument(<Search dispatch={spy}/>);
         TestUtils
             .Simulate
-            .change(search.refs.searchText);
+            .click(search.refs.showCompleted);
         expect(spy).toHaveBeenCalledWith(action);
     });
 });

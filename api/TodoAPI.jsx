@@ -30,7 +30,7 @@ module.exports = {
 
         //Filter by searchText
         filteredTodos = filteredTodos.filter((todo) => {
-            if(todo.text.toLowerCase().includes(searchText.toLowerCase())) 
+            if(todo.text.toString().toLowerCase().includes(searchText.toLowerCase())) 
             {
                 return true;
             }
