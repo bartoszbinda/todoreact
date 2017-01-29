@@ -5,34 +5,32 @@ var TestUtils = require('react-addons-test-utils');
 require('script!jquery/dist/jquery.min.js');
 var $ = require('jquery');
 
-var AddTodo = require('AddTodo');
+import {AddTodo} from "AddTodo";
 
 describe('AddTodo', () => {
     it('should exists', () => {
         expect(AddTodo).toExist();
     });
-    it('shoudln\'t been called with 0 length', () => {
+    it('shoudln\'t dispatch ADD_TODO when invalid todoText', () => {
         var spy = expect.createSpy();
-        var addTodo = TestUtils.renderIntoDocument(<AddTodo onSubmitTodo={spy}/>);
-
+        var addTodo = TestUtils.renderIntoDocument(<AddTodo dispatch={spy}/>);
         var $el = $(ReactDOM.findDOMNode(addTodo));
         addTodo.refs.item.value = "";
-        TestUtils
-            .Simulate
-            .submit($el.find('form')[0]);
+        TestUtils.Simulate.submit($el.find('form')[0]);
         expect(spy).toNotHaveBeenCalled();
 
     });
-    it('should been called with valid arguments', () => {
+    it("should dispatch ADD_TODO when valid  todo text", () => {
+        var todoText = "check email";
+        var action = {
+            type: "ADD_TODO",
+            text: todoText
+        }
         var spy = expect.createSpy();
-        var addTodo = TestUtils.renderIntoDocument(<AddTodo onSubmitTodo={spy}/>);
+        var addTodo = TestUtils.renderIntoDocument(<AddTodo dispatch={spy}/>);
         var $el = $(ReactDOM.findDOMNode(addTodo));
-
-        addTodo.refs.item.value = "bobo";
-        TestUtils
-            .Simulate
-            .submit($el.find('form')[0]);
-        expect(spy).toHaveBeenCalledWith('bobo');
-
-    });
+        addTodo.refs.item.value = todoText;
+        TestUtils.Simulate.submit($el.find('form')[0]);
+        expect(spy).toHaveBeenCalledWith(action);
+    }) ;
 });

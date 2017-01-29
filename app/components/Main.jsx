@@ -3,10 +3,11 @@ var uuid = require("node-uuid");
 var moment = require("moment");
 
 var TodoAPI = require("TodoAPI");
-var TodoList = require("TodoList");
-var Todo = require("Todo");
-var AddTodo = require("AddTodo");
-var Search = require("Search");
+import TodoList from "TodoList";
+import Todo from "Todo";
+import AddTodo from "AddTodo";
+import Search from "Search";
+//var Search = require("Search");
 
 var Main = React.createClass({
 	getInitialState: function() {
@@ -53,7 +54,7 @@ var Main = React.createClass({
                         <div className='container'>
                             <Search onSearch={this.handleSearch}/>
                             <TodoList/>
-                            <AddTodo onSubmitTodo={this.handleAddTodo}/>
+                            <AddTodo/>
                         </div>
                     </div>
                 </div>
