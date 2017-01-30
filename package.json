@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack -p",
+    "dev": "webpack -d -w"
   },
   "author": "Bartosz Binda",
   "repository": {

@@ -26,15 +26,4 @@ describe('Search', () => {
 
         expect(spy).toHaveBeenCalledWith(action);
     });
-    it('should dispatch toggleShowCompleted when checkbox checked', () => {
-        var spy = expect.createSpy();
-        var action = {
-            type: "TOGGLE_SHOW_COMPLETED"
-        };
-        var search = TestUtils.renderIntoDocument(<Search dispatch={spy}/>);
-        TestUtils
-            .Simulate
-            .click(search.refs.showCompleted);
-        expect(spy).toHaveBeenCalledWith(action);
-    });
 });
