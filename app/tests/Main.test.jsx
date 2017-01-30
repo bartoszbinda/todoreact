@@ -13,16 +13,4 @@ describe('Main', () => {
     it('should exists', () => {
         expect(Main).toExist();
     });
-    it("should render todoList", () => {
-        var store = configureStore.configure();
-        var provider = TestUtils.renderIntoDocument(
-            <Provider store={store}> 
-                <Main/>
-            </Provider>
-            );
-        var main = TestUtils.scryRenderedComponentsWithType(provider, Main)[0];
-        var todoList = TestUtils.scryRenderedComponentsWithType(main, TodoList);
-
-        expect(todoList.length).toEqual(1);
-    });
 });
