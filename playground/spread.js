@@ -6,9 +6,4 @@
 // var toAdd = [9, 5];
 //
 // console.log(add(...toAdd));
-var groupA = ['bobo', 'kotek'];
-var groupB = ['kotko'];
-var final = [
-    3, ...groupA,
-    ...groupB
-];
+var groupA = ["bobo", "kotek"];
