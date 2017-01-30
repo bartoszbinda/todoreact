@@ -80,7 +80,7 @@ module.exports = {
 	sassLoader: {
 		includePaths: [path.resolve(__dirname, "./node_modules/foundation-sites/scss")]
 	},
-	// devtools: "cheap-module-source-map"   
-    devtool: 'eval'   //fastest
+	devtools: "cheap-module-source-map"   
+    // devtool: 'eval'   //fastest
     //devtool: 'inline-eval-cheap-source-map'
 };
