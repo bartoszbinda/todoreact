@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var CompressionPlugin = require("compression-webpack-plugin");
 module.exports = {
     entry: [
         'script!jquery/dist/jquery.min.js',
@@ -10,12 +11,39 @@ module.exports = {
         jquery: 'jQuery'
     },
     plugins: [new webpack.ProvidePlugin({'$': 'jquery', 'jQuery': 'jquery'})
-// ,
-//     new webpack.DefinePlugin({
-//     'process.env': {
-//       'NODE_ENV': JSON.stringify('production')
-//     }
-//   })
+,
+    new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
+  new webpack.optimize.AggressiveMergingPlugin(),
+  new webpack.optimize.AggressiveMergingPlugin(),
+  new webpack.optimize.OccurrenceOrderPlugin(),
+  new webpack.optimize.DedupePlugin(),
+
+   new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false, // Suppress uglification warnings
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+      },
+      exclude: [/\.min\.js$/gi] // skip pre-minified libs
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), //https://stackoverflow.com/questions/25384360/how-to-prevent-moment-js-from-loading-locales-with-webpack
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0
+    })
     ],
     output: {
         path: __dirname,
@@ -51,8 +79,9 @@ module.exports = {
     sassLoader: {
         includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')]
     },
-    //devtools: "cheap-module-source-map" //fastest
-    devtool: 'eval'
+    devtools: "cheap-module-source-map",
+ //fastest
+    // devtool: 'eval'
     //devtool: 'inline-eval-cheap-source-map'
 
 };
