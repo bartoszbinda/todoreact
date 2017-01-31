@@ -20,8 +20,7 @@ module.exports = {
 	externals: {
 		jquery: "jQuery"
 	},
-	plugins: [new webpack.ProvidePlugin({"$": "jquery", "jQuery": "jquery"})
-,
+	plugins: [new webpack.ProvidePlugin({"$": "jquery", "jQuery": "jquery"}),
 		new webpack.DefinePlugin({
 			"process.env": {
 				NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -32,32 +31,32 @@ module.exports = {
 				MESSAGING_SENDER_ID: JSON.stringify(process.env.MESSAGING_SENDER_ID)
 			}
 		}),
-		new webpack.optimize.AggressiveMergingPlugin(),
-		new webpack.optimize.OccurrenceOrderPlugin(),
-		new webpack.optimize.DedupePlugin(),
+		// new webpack.optimize.AggressiveMergingPlugin(),
+		// new webpack.optimize.OccurrenceOrderPlugin(),
+		// new webpack.optimize.DedupePlugin(),
 
-		new webpack.optimize.UglifyJsPlugin({
-			mangle: true,
-			compress: {
-				warnings: false, // Suppress uglification warnings
-				pure_getters: true,
-				unsafe: true,
-				unsafe_comps: true,
-				screw_ie8: true
-			},
-			output: {
-				comments: false,
-			},
-			exclude: [/\.min\.js$/gi] // skip pre-minified libs
-		}),
-		new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), //https://stackoverflow.com/questions/25384360/how-to-prevent-moment-js-from-loading-locales-with-webpack
-		new CompressionPlugin({
-			asset: "[path].gz[query]",
-			algorithm: "gzip",
-			test: /\.js$|\.css$|\.html$/,
-			threshold: 10240,
-			minRatio: 0
-		})
+ 	// 		new webpack.optimize.UglifyJsPlugin({
+		// 	mangle: true,
+		// 	compress: {
+		// 		warnings: false, // Suppress uglification warnings
+		// 		pure_getters: true,
+		// 		unsafe: true,
+		// 		unsafe_comps: true,
+		// 		screw_ie8: true
+		// 	},
+		// 	output: {
+		// 		comments: false,
+		// 	},
+		// 	exclude: [/\.min\.js$/gi] // skip pre-minified libs
+		// }),
+		// new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), //https://stackoverflow.com/questions/25384360/how-to-prevent-moment-js-from-loading-locales-with-webpack
+		// new CompressionPlugin({
+		// 	asset: "[path].gz[query]",
+		// 	algorithm: "gzip",
+		// 	test: /\.js$|\.css$|\.html$/,
+		// 	threshold: 10240,
+		// 	minRatio: 0
+		// })
 	],
 	output: {
 		path: __dirname,
@@ -87,12 +86,12 @@ module.exports = {
 					presets: ["react", "es2015", "stage-0", "stage-1"]
 				},
 				test: /\.jsx?$/,
-				exclude: /(node_modules|bower_components)/
+				exclude: /(node_modules|bower_components|public)/
 			}
 		]
 	},
 	sassLoader: {
 		includePaths: [path.resolve(__dirname, "./node_modules/foundation-sites/scss")]
 	},
-	devtools: process.env.NODE_ENV === "development" ? "cheap-module-source-map" : null
+	devtools: process.env.NODE_ENV === "development" ? "source-map" : null
 };
