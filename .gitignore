@@ -2,3 +2,4 @@ node_modules/*
 stats.json
 public/bundle.js
 public/bundle.js.gz
+config/*
