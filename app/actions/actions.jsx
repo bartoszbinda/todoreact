@@ -7,6 +7,24 @@ export var setSearchText = (searchText) => {
 		searchText
 	};
 };
+
+export var startAddTodos = () => {
+	return (dispatch, getState) => {
+		var todosRef = firebaseRef.child("todos");
+		todosRef.once("value").then((snapshot) => {
+			var todos = snapshot.val() || {};
+			var parsedTodos = [];
+			Object.keys(todos).forEach((todoID) => {
+				parsedTodos.push({
+					id: todoID,
+					...todos[todoID]
+				});
+
+			});
+			dispatch(addTodos(parsedTodos));
+		});
+	};
+}
 export var addTodo = (todo) => {
 	return {
 		type: "ADD_TODO",

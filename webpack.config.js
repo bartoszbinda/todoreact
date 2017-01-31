@@ -1,6 +1,9 @@
 var webpack = require("webpack");
 var path = require("path");
 var CompressionPlugin = require("compression-webpack-plugin");
+
+process.env.NODE_ENV =  process.env.NODE_ENV || "development";
+
 module.exports = {
 	entry: [
 		"script!jquery/dist/jquery.min.js",
@@ -17,7 +20,6 @@ module.exports = {
 				"NODE_ENV": JSON.stringify("production")
 			}
 		}),
-		new webpack.optimize.AggressiveMergingPlugin(),
 		new webpack.optimize.AggressiveMergingPlugin(),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.optimize.DedupePlugin(),
@@ -80,7 +82,6 @@ module.exports = {
 	sassLoader: {
 		includePaths: [path.resolve(__dirname, "./node_modules/foundation-sites/scss")]
 	},
-	// devtools: "cheap-module-source-map"   
-    devtool: 'eval'   //fastest
-    //devtool: 'inline-eval-cheap-source-map'
+	//devtools: "cheap-module-source-map"   
+    //devtool: 'eval'   //fastest
 };
