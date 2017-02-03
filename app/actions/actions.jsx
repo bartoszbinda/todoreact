@@ -1,6 +1,5 @@
 import firebase, {firebaseRef, githubProvider} from "app/firebase";
 import moment from "moment";
-import { browserHistory } from 'react-router';
 
 export var setSearchText = (searchText) => {
 	return {
@@ -85,8 +84,6 @@ export var startLogin = () => {
 	return (dispatch, getState) => {
 		firebase.auth().signInWithPopup(githubProvider).then((result) =>{
 			console.log("Auth worked!", result);
-			browserHistory.push("/todos");
-
 		}, (error) => {
 			console.error(error);
 		});
@@ -96,9 +93,6 @@ export var startLogout = () => {
 	return (dispatch, getState) => {
 		return firebase.auth().signOut().then(()=>{
 			console.log("logged out");
-			browserHistory.goBack();
-			browserHistory.push("/");
-
 		});
 	};
 }

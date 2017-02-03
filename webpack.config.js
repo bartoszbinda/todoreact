@@ -30,7 +30,8 @@ module.exports = {
 				STORAGE_BUCKET: JSON.stringify(process.env.STORAGE_BUCKET),
 				MESSAGING_SENDER_ID: JSON.stringify(process.env.MESSAGING_SENDER_ID)
 			}
-		}),
+		})
+		// ,
 		// new webpack.optimize.AggressiveMergingPlugin(),
 		// new webpack.optimize.OccurrenceOrderPlugin(),
 		// new webpack.optimize.DedupePlugin(),
