@@ -7,7 +7,7 @@
     "test": "NODE_ENV=test karma start",
     "start": "npm run build && node server.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "webpack -d -w"
+    "dev": "webpack -d -w && NODE_ENV=development node server.js"
   },
   "author": "Bartosz Binda",
   "repository": {
